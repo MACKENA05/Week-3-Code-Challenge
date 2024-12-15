@@ -16,7 +16,7 @@ function fetchMovies(){
         populateMovieList(movies);
         displayMovieDetails(movies[0]);
     })
-    .catch(error => console.log(error))     //incase of any error it will be logged to the console
+    .catch(error => console.log(error));     //incase of any error it will be logged to the console
 }
 
 //generate list of  movie titles
@@ -88,4 +88,4 @@ function updateTicketOnServer(movie){
    .catch(error => console.error('Error updating tickets:', error));
 }
 //initialize the app
- 
+fetchMovies();

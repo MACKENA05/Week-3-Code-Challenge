@@ -6,7 +6,6 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height:100vw;
 }
 #movie-container {
     text-align: center;
@@ -27,8 +26,9 @@ p {
 }
 
 #buy-ticket-button{
-  padding: 10px;
+  padding: 20px;
   font-size: 18px;
+  color:#E7D2CC;
 }
 button:disabled {
     background-color: grey;
