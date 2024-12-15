@@ -74,4 +74,18 @@ function buyTicket(movie,event){
     }
   }
 }
+//updating ticket count on server
+function updateTicketOnServer(movie){
+   fetch(`${api_url}/${movie.id}`,{
+    method:'PATCH',
+    headers: {
+        'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify({ tickets_sold: movie.tickets_sold })
+   })
+   .then(response => response.json())
+   .then(updatedMovie => console.log('Updated Movie:', updatedMovie))
+   .catch(error => console.error('Error updating tickets:', error));
+}
+//initialize the app
  
