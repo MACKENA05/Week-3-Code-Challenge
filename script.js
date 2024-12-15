@@ -19,7 +19,7 @@ function fetchMovies(){
     .catch(error => console.log(error))     //incase of any error it will be logged to the console
 }
 
-//generate movie titles
+//generate list of  movie titles
 function populateMovieList(movies){
     filmsList.innerHTML = ''                //clears the list before adding new items
     movies.forEach(movie =>{
@@ -35,3 +35,23 @@ function populateMovieList(movies){
     filmsList.appendChild(li);
 });
 };
+ //displaying movie details
+ function displayMovieDetails(movie){
+    movieTitle.textContent = movie.title;
+    moviePoster.src = movie.poster;
+    movieRuntime.textContent = `RunTime: ${movie.runtime} minutes`;
+    movieShowtime.textContent = `ShowTime: ${movie.showtime}`;
+    const available = movie.capacity - movie.ticket_sold;
+    availableTickets.textContent = `Available Tickets: ${available}`;
+
+    //enabling and disabling buy button
+    if (available > 0) {
+        buyTicketButton.disabled = false;
+        buyTicketButton.textContent = 'Buy Ticket';
+        buyTicketButton.onclick = (event) => buyTicket(movie, event);
+    } else {
+        buyTicketButton.disabled = true;
+        buyTicketButton.textContent = 'Sold Out';
+    }
+}
+ 
