@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(./images/bg1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height:100vw;
+}
+#movie-container {
+    text-align: center;
+    padding: 20px;
+}
+#movie-container img {
+    width: 300px;
+    height: auto;
+}
+
+#movie-title{
+    color: white;
+    font-size: 50px;
+}
+p {
+    color: red;
+    font-size: 20px;
+}
+
