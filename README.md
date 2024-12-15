@@ -55,6 +55,7 @@ Ensure that your server is running. You can use the following command based on y
  json-server --watch db.json
 ```
  - Ensure the server is serving movie data at http://localhost:3000/films.
+ - Ensure the server is always running 
 
  ### 4. Open the App
 Open the index.html file in your browser to start using the app:
