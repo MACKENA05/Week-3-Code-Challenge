@@ -32,6 +32,6 @@ function populateMovieList(movies){
     if(movie.capacity-movie.ticket_sold === 0){
         li.classList.add('sold out')
     }
-    filmsList.append(li);
+    filmsList.appendChild(li);
 });
 };
