@@ -20,31 +20,34 @@ function fetchMovies(){
 }
 
 //generate list of  movie titles
-function populateMovieList(movies){
-    filmsList.innerHTML = ''                //clears the list before adding new items
-    movies.forEach(movie =>{
+function populateMovieList(movies) {
+    filmsList.innerHTML = '';  // Clear the list before adding new items
+    movies.forEach(movie => {
         const li = document.createElement('li');
-        li.classList.add('film','item')                       //adding class to the li element
-        li.textContent = movie.title
-        //adding click event to display the selected movies detail
-    li.addEventListener('click',() => displayMovieDetails(movie))
-    //mark as sold if no tickets ara not available
-    if(movie.capacity-movie.ticket_sold === 0){
-        li.classList.add('sold out')
-    }
-    filmsList.appendChild(li);
-});
-};
+        li.classList.add('film', 'item');
+        li.textContent = movie.title;
+
+        // Add click event to display the selected movie's details
+        li.addEventListener('click', () => displayMovieDetails(movie));
+
+        // Mark as sold-out if no tickets are available
+        if (movie.capacity - movie.tickets_sold === 0) {
+            li.classList.add('sold-out');
+        }
+
+        filmsList.appendChild(li);
+    });
+}
  //displaying movie details
- function displayMovieDetails(movie){
+ function displayMovieDetails(movie) {
     movieTitle.textContent = movie.title;
     moviePoster.src = movie.poster;
-    movieRuntime.textContent = `RunTime: ${movie.runtime} minutes`;
-    movieShowtime.textContent = `ShowTime: ${movie.showtime}`;
-    const available = movie.capacity - movie.ticket_sold;
+    movieRuntime.textContent = `Runtime: ${movie.runtime} minutes`;
+    movieShowtime.textContent = `Showtime: ${movie.showtime}`;
+    const available = movie.capacity - movie.tickets_sold;
     availableTickets.textContent = `Available Tickets: ${available}`;
 
-    //enabling and disabling buy button
+    // Enable/Disable the "Buy Ticket" button
     if (available > 0) {
         buyTicketButton.disabled = false;
         buyTicketButton.textContent = 'Buy Ticket';
@@ -55,33 +58,36 @@ function populateMovieList(movies){
     }
 }
 
+
 //buying a ticket
-function buyTicket(movie,event){
-    event.preventDefault();         // prevent page reloading
-    const available = movie.capacity - movie.ticket_sold;
-    if(available>0){
-        movie.ticket_sold++;           //increase the tickets sold
-        availableTickets.textContent = `Available Tickets: ${available}`
-        
-        //updating the tickets on server
+function buyTicket(movie, event) {
+    event.preventDefault(); 
+    const available = movie.capacity - movie.tickets_sold;
+    if (available > 0) {
+        movie.tickets_sold++;  // Increase the tickets sold
+        availableTickets.textContent = `Available Tickets: ${movie.capacity - movie.tickets_sold}`;
+
+        // Update the server with the new ticket count
         updateTicketOnServer(movie);
 
-        //show browser alert after successful purchase
+        // Show a browser alert message after successful purchase
         alert(`You have successfully bought a ticket for "${movie.title}"! your ticket number is ${movie.title.charAt(0)}${available}`);
-    if(available<0){
-        buyTicketButton.disabled = true;
-        buyTicketButton.textContent = 'Sold Out';
+
+        // Disable the button if the movie is sold out
+        if (movie.capacity - movie.tickets_sold === 0) {
+            buyTicketButton.disabled = true;
+            buyTicketButton.textContent = 'Sold Out';
+        }
     }
-  }
 }
 //updating ticket count on server
 function updateTicketOnServer(movie){
-   fetch(`${api_url}/${movie.id}`,{
+   fetch(`${API_URL}/${movie.id}`,{
     method:'PATCH',
     headers: {
         'Content-Type' : 'application/json'
     },
-    body: JSON.stringify({ tickets_sold: movie.tickets_sold })
+    body: JSON.stringify({ tickets_sold : movie.tickets_sold })
    })
    .then(response => response.json())
    .then(updatedMovie => console.log('Updated Movie:', updatedMovie))
