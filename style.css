@@ -26,3 +26,36 @@ p {
     font-size: 20px;
 }
 
+#buy-ticket-button{
+  padding: 10px;
+  font-size: 18px;
+}
+button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+#films {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.film.item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius:20px;
+    width: 300px;
+    margin: 10px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+
+}
+
+.sold-out {
+    text-decoration: line-through;
+    color: grey;
+}
