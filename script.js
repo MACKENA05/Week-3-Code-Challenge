@@ -54,4 +54,24 @@ function populateMovieList(movies){
         buyTicketButton.textContent = 'Sold Out';
     }
 }
+
+//buying a ticket
+function buyTicket(movie,event){
+    event.preventDefault();         // prevent page reloading
+    const available = movie.capacity - movie.ticket_sold;
+    if(available>0){
+        movie.ticket_sold++;           //increase the tickets sold
+        availableTickets.textContent = `Available Tickets: ${available}`
+        
+        //updating the tickets on server
+        updateTicketOnServer(movie);
+
+        //show browser alert after successful purchase
+        alert(`You have successfully bought a ticket for "${movie.title}"! your ticket number is ${movie.title.charAt(0)}${available}`);
+    if(available<0){
+        buyTicketButton.disabled = true;
+        buyTicketButton.textContent = 'Sold Out';
+    }
+  }
+}
  
