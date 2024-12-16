@@ -8,6 +8,7 @@ const availableTickets = document.getElementById('available-tickets')
 const buyTicketButton = document.getElementById('buy-ticket-button')
 const filmsList = document.getElementById('films')
 const searchInput = document.getElementById('search-input');
+const movieDescription = document.getElementById('movie-description')
 
 //fetching movie data from the server
 function fetchMovies(){
@@ -77,6 +78,7 @@ function populateMovieList(movies) {
  function displayMovieDetails(movie) {
     movieTitle.textContent = movie.title;
     moviePoster.src = movie.poster;
+    movieDescription.textContent = movie.description; 
     movieRuntime.textContent = `Runtime: ${movie.runtime} minutes`;
     movieShowtime.textContent = `Showtime: ${movie.showtime}`;
     const available = movie.capacity - movie.tickets_sold;
