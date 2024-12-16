@@ -18,7 +18,7 @@ Welcome to FlatDango—a dynamic movie theater booking system where you can brow
 **FlatDango Movie Theater Booking** allows users to:
 1. View a list of available movies.
 2. Search for movies by title.
-3. See details about each movie, including runtime, showtime, and available tickets.
+3. See details about each movie, including descrition, runtime, showtime, and available tickets.
 4. Purchase tickets (with real-time availability updates).
 
 The movie data is fetched from a server, and when a user buys a ticket, the server is updated to reflect the change in ticket availability.
@@ -27,7 +27,7 @@ The movie data is fetched from a server, and when a user buys a ticket, the serv
 
 - **Browse Movies**: View a list of available movies.
 - **Search for Movies**: Use a search input to find movies by title.
-- **Movie Details**: See detailed information such as runtime, showtime, available tickets, and a poster image.
+- **Movie Details**: See detailed information such as description, runtime, showtime, available tickets, and a poster image.
 - **Buy Tickets**: Purchase tickets for available movies (ticket count is updated in real time).
 - **Sold Out Notifications**: Movies that have no available tickets will show a "Sold Out" message.
 - **Showtime Information**: Movies now display their showtime in addition to the title and ticket availability.
@@ -50,7 +50,7 @@ git clone https://github.com/your-username/flatdango-movie-theater.git
 ```
 
 ### 2. Install Dependencies
-If you're setting up a local server to serve the movie data, ensure that your backend (e.g., a Node.js server) is running at `http://localhost:3000/films` and returns movie data in the specified format.
+If you're setting up a local server to serve the movie data, ensure that your server is running at `http://localhost:3000/films` and returns movie data in the specified format.
 
 ### 3. Start the Server
 Ensure that your server is running. You can use the following command based on your server's setup:
@@ -67,7 +67,7 @@ open index.html
 ```
 ## Usage
 - Browse Movies: After the page loads, you'll see a list of available movies in the movie list section.
-- View Movie Details: Click on any movie title in the list to see more details (e.g., runtime, showtime, available tickets).
+- View Movie Details: Click on any movie title in the list to see more details (e.g.,description, runtime, showtime, available tickets).
 - Buy Tickets: If tickets are available, you can click the "Buy Ticket" button. After purchase, your available tickets will be updated in real time.
 - Sold Out: If there are no available tickets for a movie, the "Buy Ticket" button will be disabled, and the movie will be marked as "Sold Out."
 
