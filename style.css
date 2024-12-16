@@ -57,8 +57,8 @@ body {
 
 #movie-container img {
     width: 100%;
-    max-width: 400px;
-    height: 400px;
+    max-width: 500px;
+    height: 300px;
     border-radius: 8px;
     margin-top: 20px;
 }
@@ -67,7 +67,7 @@ body {
 #movie-title {
     color: whitesmoke;
     font-size: 40px;
-    padding-top: 30px;
+    padding-top: 10px;
 }
 
 /* Ticket Info and Buy Button */
@@ -77,7 +77,7 @@ p {
 }
 
 #buy-ticket-button {
-    padding: 15px;
+    padding: 10px;
     font-size: 18px;
     color: white;
     background-color: #007bff;
@@ -123,6 +123,14 @@ button:disabled {
 .film.item:hover {
     background-color: #333;
 }
+
+.showtime {
+    display: block;
+    font-size: 14px;
+    color: #f39c12;  
+    margin-top: 5px;
+}
+
 
 .sold-out {
     text-decoration: line-through;
@@ -255,6 +263,26 @@ body {
 .site-title span {
     font-size: 24px;
     font-weight: normal;
+    color: #f39c12;
+}
+/* Search bar styles */
+#search-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#search-input {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    margin-bottom: 20px;
+}
+
+#search-input::placeholder {
     color: #f39c12;
 }
 

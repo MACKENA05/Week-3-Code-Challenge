@@ -7,6 +7,7 @@ const movieShowtime = document.getElementById('movie-showtime')
 const availableTickets = document.getElementById('available-tickets')
 const buyTicketButton = document.getElementById('buy-ticket-button')
 const filmsList = document.getElementById('films')
+const searchInput = document.getElementById('search-input');
 
 //fetching movie data from the server
 function fetchMovies(){
@@ -18,6 +19,23 @@ function fetchMovies(){
     })
     .catch(error => console.log(error));     //incase of any error it will be logged to the console
 }
+//search movies
+function filterMovies(searchTerm) {
+    const movies = document.querySelectorAll('.film.item');
+    movies.forEach(movie => {
+        const movieTitle = movie.textContent.toLowerCase();
+        if (movieTitle.includes(searchTerm.toLowerCase())) {
+            movie.style.display = 'block'; // Show the movie if it matches
+        } else {
+            movie.style.display = 'none'; // Hide the movie if it doesn't match
+        }
+    });
+}
+
+// Add an event listener to the search input
+searchInput.addEventListener('input', (event) => {
+    filterMovies(event.target.value); // Filter movies on every keystroke
+});
 
 //generate list of  movie titles
 function populateMovieList(movies) {
@@ -25,7 +43,15 @@ function populateMovieList(movies) {
     movies.forEach(movie => {
         const li = document.createElement('li');
         li.classList.add('film', 'item');
-        li.textContent = movie.title;
+        
+        // Create a span for the movie title
+        const title = document.createElement('span');
+        title.textContent = movie.title;
+
+        // Create a span for the movie showtime
+        const showtime = document.createElement('span');
+        showtime.textContent = `Showtime: ${movie.showtime}`;
+        showtime.classList.add('showtime');  // Optional: Add a class for styling
 
         // Add click event to display the selected movie's details
         li.addEventListener('click', () => displayMovieDetails(movie));
@@ -35,9 +61,18 @@ function populateMovieList(movies) {
             li.classList.add('sold-out');
         }
 
+        // Append title and showtime to the li
+        li.appendChild(title);
+        li.appendChild(showtime);
+
         filmsList.appendChild(li);
     });
+
+    // Call filterMovies initially to ensure the search bar works from the start
+    filterMovies(searchInput.value);
 }
+
+
  //displaying movie details
  function displayMovieDetails(movie) {
     movieTitle.textContent = movie.title;
