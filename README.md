@@ -17,17 +17,20 @@ Welcome to FlatDango—a dynamic movie theater booking system where you can brow
 
 **FlatDango Movie Theater Booking** allows users to:
 1. View a list of available movies.
-2. See details about each movie, including runtime, showtime, and available tickets.
-3. Purchase tickets (with real-time availability updates).
+2. Search for movies by title.
+3. See details about each movie, including runtime, showtime, and available tickets.
+4. Purchase tickets (with real-time availability updates).
 
 The movie data is fetched from a server, and when a user buys a ticket, the server is updated to reflect the change in ticket availability.
 
 ## Features
 
 - **Browse Movies**: View a list of available movies.
+- **Search for Movies**: Use a search input to find movies by title.
 - **Movie Details**: See detailed information such as runtime, showtime, available tickets, and a poster image.
 - **Buy Tickets**: Purchase tickets for available movies (ticket count is updated in real time).
 - **Sold Out Notifications**: Movies that have no available tickets will show a "Sold Out" message.
+- **Showtime Information**: Movies now display their showtime in addition to the title and ticket availability.
 
 ## Technologies Used
 
@@ -54,7 +57,7 @@ Ensure that your server is running. You can use the following command based on y
 ```bash
  json-server --watch db.json
 ```
- - Ensure the server is serving movie data at http://localhost:3000/films.
+ - Ensure the server is serving movie data at `http://localhost:3000/films`.
  - Ensure the server is always running 
 
  ### 4. Open the App
@@ -75,7 +78,7 @@ open index.html
 |-- style.css          # Styling for the website
 |-- script.js          # JavaScript functionality (fetch, display, buy tickets)
 |-- /images            # Image assets (icons, movie posters, etc.)
-|-- /db.json           # simulate and store movie data
+|-- /db.json           # Simulate and store movie data
 |-- README.md          # Project documentation (this file)
 ```
 ## HTML Structure
@@ -126,7 +129,7 @@ If you'd like to contribute to this project, feel free to fork the repository, c
 ### Steps to Contribute:
 - Fork the repository.
 - Create a feature branch `(git checkout -b feature-name)`.
-- Commit your changes `(git commit -am 'Add new feature')`.
+- Commit your changes `(git commit -m 'Add new feature')`.
 - Push to the branch `(git push origin feature-name)`.
 - Create a new Pull Request.
 
